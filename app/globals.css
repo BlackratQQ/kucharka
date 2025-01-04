@@ -1,42 +1,214 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+/* Reset */
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f9f9f9;
+  height: 100vh; /* Zajištění výšky celé stránky */
+  display: flex; /* Flexbox pro centrování */
+  justify-content: center; /* Horizontální centrování */
+  align-items: center; /* Vertikální centrování */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+p {
+  margin-bottom: 1rem;
 }
 
 a {
-  color: inherit;
+  color: #007bff;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+a:hover {
+  text-decoration: underline;
+}
+
+/* Login Form */
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-form h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.login-form p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #0056b3;
+}
+
+.login-form .error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.5;
+  resize: vertical; /* Umožňuje pouze vertikální změnu velikosti */
+  background-color: #f9f9f9; /* Světlé pozadí */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #007bff; /* Modrý okraj při zaostření */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3); /* Jemný efekt při zaostření */
+  background-color: #fff; /* Bílé pozadí při zaostření */
+}
+
+textarea::placeholder {
+  color: #aaa; /* Světle šedý text pro placeholder */
+}
+
+.logout-button {
+  display: block; /* Zajistí, že tlačítko zabere celý řádek */
+  margin: 20px auto 0; /* Vertikální mezery a zarovnání na střed */
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #dc3545; /* Červená barva */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center; /* Zarovnání textu na střed */
+}
+
+.logout-button:hover {
+  background-color: #b02a37; /* Tmavší červená při hoveru */
+}
+
+.logout-button:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(220, 53, 69, 0.5); /* Jemný efekt při zaostření */
+}
+
+/* Kontejner pro obsah */
+.recepty-container {
+  display: flex;
+  flex-wrap: wrap; /* Povolení zalamování obsahu */
+  gap: 20px; /* Mezera mezi kartami */
+  justify-content: center; /* Horizontální zarovnání na střed */
+  align-items: flex-start; /* Zarovnání nahoře při wrapování */
+  padding: 40px 20px; /* Vnitřní odsazení nahoře a po stranách */
+}
+
+/* Nadpis */
+.recepty-title {
+  width: 100%; /* Nadpis zabírá celou šířku */
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #2c3e50; /* Tmavší odstín pro nadpis */
+  text-align: center; /* Zarovnání textu na střed */
+}
+
+/* Kartičky */
+.recept-card {
+  flex: 0 1 calc(20% - 20px); /* Karta zabírá 20 % šířky mínus mezera */
+  max-width: 300px; /* Maximální šířka karty */
+  background: linear-gradient(
+    to bottom right,
+    #f8f9fa,
+    #e9ecef
+  ); /* Jemný gradient */
+  border: 1px solid #dee2e6; /* Světle šedý okraj */
+  border-radius: 12px; /* Zaoblené rohy */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Jemný stín */
+  padding: 20px;
+  text-align: left; /* Zarovnání textu vlevo */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover efekt */
+.recept-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Zvýraznění při najetí */
+  cursor: pointer;
+}
+
+/* Název receptu */
+.recept-card h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black; /* Tmavě šedý text */
+  text-align: center; /* Nadpis na střed */
+  border-bottom: 2px solid #adb5bd; /* Oddělení linkou */
+  padding-bottom: 10px;
+}
+
+.recept-card p:first-of-type {
+  margin-bottom: 10px;
+  font-weight: bold; /* Zvýraznění první části (čas) */
+  background-color: #e9ecef; /* Jemné pozadí */
+  padding: 5px 10px;
+  border-radius: 6px;
+  display: inline-block; /* Zajištění okolo textu */
 }
