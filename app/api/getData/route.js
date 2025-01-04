@@ -7,7 +7,7 @@ export async function GET() {
     const { data, error } = await supabaseAdmin
       .from("recepty")
       .select("id, nazev, cas, recept")
-      .order("id", { ascending: true }); // Seřazení podle ID
+      .order("id", { ascending: false }); // Seřazení podle ID sestupně
 
     if (error) {
       return NextResponse.json(
