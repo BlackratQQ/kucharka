@@ -11,10 +11,13 @@ body {
   line-height: 1.5;
   color: #333;
   background-color: #f9f9f9;
-  height: 100vh; /* Zajištění výšky celé stránky */
-  display: flex; /* Flexbox pro centrování */
-  justify-content: center; /* Horizontální centrování */
-  align-items: center; /* Vertikální centrování */
+  min-height: 100vh; /* Nastavení minimální výšky stránky */
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Flexbox pro zajištění vertikálního layoutu */
+  align-items: center; /* Centrovaný obsah horizontálně */
+  justify-content: flex-start; /* Obsah začíná nahoře */
+  overflow-y: auto; /* Povolení vertikálního scrollování */
 }
 
 h1,
@@ -149,67 +152,56 @@ textarea::placeholder {
   outline: none;
   box-shadow: 0 0 4px rgba(220, 53, 69, 0.5); /* Jemný efekt při zaostření */
 }
-
-/* Kontejner pro obsah */
+/* Wrapper pro kartičky */
 .recepty-container {
-  display: flex;
-  flex-wrap: wrap; /* Povolení zalamování obsahu */
-  gap: 20px; /* Mezera mezi kartami */
-  justify-content: center; /* Horizontální zarovnání na střed */
-  align-items: flex-start; /* Zarovnání nahoře při wrapování */
-  padding: 40px 20px; /* Vnitřní odsazení nahoře a po stranách */
+  display: flex; /* Aktivace flexboxu */
+  flex-wrap: wrap; /* Povolení zalamování obsahu na další řádek */
+  gap: 20px; /* Mezera mezi kartičkami */
+  justify-content: center; /* Zarovnání obsahu na střed */
+  padding: 20px; /* Vnitřní odsazení kolem kartiček */
+  max-width: 1200px; /* Maximální šířka wrapperu */
+  margin: 0 auto; /* Centrovaní wrapperu na stránce */
 }
 
 /* Nadpis */
 .recepty-title {
-  width: 100%; /* Nadpis zabírá celou šířku */
-  margin-bottom: 20px;
+  width: 100%;
   font-size: 28px;
-  font-weight: bold;
-  color: #2c3e50; /* Tmavší odstín pro nadpis */
-  text-align: center; /* Zarovnání textu na střed */
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
 }
 
-/* Kartičky */
+/* Jednotlivá kartička */
 .recept-card {
-  flex: 0 1 calc(20% - 20px); /* Karta zabírá 20 % šířky mínus mezera */
-  max-width: 300px; /* Maximální šířka karty */
-  background: linear-gradient(
-    to bottom right,
-    #f8f9fa,
-    #e9ecef
-  ); /* Jemný gradient */
-  border: 1px solid #dee2e6; /* Světle šedý okraj */
-  border-radius: 12px; /* Zaoblené rohy */
+  width: 250px; /* Pevná šířka kartičky */
+  background-color: #fff; /* Bílý podklad */
+  border: 1px solid #ccc; /* Světle šedý okraj */
+  border-radius: 8px; /* Zaoblené rohy */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Jemný stín */
-  padding: 20px;
-  text-align: left; /* Zarovnání textu vlevo */
-  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 20px; /* Vnitřní odsazení uvnitř kartičky */
+  text-align: center; /* Zarovnání textu na střed */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efekt při hoveru */
 }
 
 /* Hover efekt */
 .recept-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Zvýraznění při najetí */
-  cursor: pointer;
+  transform: translateY(-5px); /* Mírný posun nahoru při hoveru */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Zvýrazněný stín */
 }
 
-/* Název receptu */
+/* Titulek kartičky */
 .recept-card h2 {
+  font-size: 18px;
   margin-bottom: 10px;
-  font-size: 20px;
-  font-weight: bold;
-  color: black; /* Tmavě šedý text */
-  text-align: center; /* Nadpis na střed */
-  border-bottom: 2px solid #adb5bd; /* Oddělení linkou */
-  padding-bottom: 10px;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
 }
 
-.recept-card p:first-of-type {
+/* Obsah kartičky */
+.recept-card p {
+  font-size: 14px;
+  color: #666;
   margin-bottom: 10px;
-  font-weight: bold; /* Zvýraznění první části (čas) */
-  background-color: #e9ecef; /* Jemné pozadí */
-  padding: 5px 10px;
-  border-radius: 6px;
-  display: inline-block; /* Zajištění okolo textu */
 }
