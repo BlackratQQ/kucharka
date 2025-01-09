@@ -5,21 +5,26 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Flexbox pro vertikální layout */
+}
+
+/* Globální stylování těla stránky */
 body {
   font-family: Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #333;
   background-color: #f9f9f9;
-  min-height: 100vh; /* Nastavení minimální výšky stránky */
-  margin: 0;
-  display: flex;
-  flex-direction: column; /* Flexbox pro zajištění vertikálního layoutu */
-  align-items: center; /* Centrovaný obsah horizontálně */
-  justify-content: flex-start; /* Obsah začíná nahoře */
-  overflow-y: auto; /* Povolení vertikálního scrollování */
+  flex: 1; /* Tělo zabere dostupnou výšku */
 }
 
+/* Nadpisy */
 h1,
 h2,
 h3,
@@ -43,6 +48,55 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Header */
+header {
+  width: 100%;
+  background: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Main */
+main {
+  flex: 1; /* Zabere zbývající prostor */
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px; /* Maximální šířka hlavního obsahu */
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  background: #f8f8f8;
+  padding: 10px 20px;
+  text-align: center;
+  border-top: 2px solid #ddd;
+  margin-top: auto; /* Footer je přilepený na spodek */
+}
+
+footer p {
+  color: #333;
+}
+
+footer a {
+  color: #007bff;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
 /* Login Form */
 .login-form {
   width: 100%;
@@ -58,11 +112,6 @@ a:hover {
   margin-bottom: 20px;
   font-size: 24px;
   color: #333;
-}
-
-.login-form p {
-  margin-bottom: 20px;
-  color: #666;
 }
 
 .login-form input {
@@ -95,7 +144,6 @@ a:hover {
 
 .login-form button:hover {
   background-color: #0056b3;
-  cursor: pointer;
 }
 
 .login-form .error-message {
@@ -105,6 +153,7 @@ a:hover {
   margin-bottom: 15px;
 }
 
+/* Textarea */
 textarea {
   width: 100%;
   padding: 10px;
@@ -113,54 +162,54 @@ textarea {
   border-radius: 4px;
   font-size: 16px;
   line-height: 1.5;
-  resize: vertical; /* Umožňuje pouze vertikální změnu velikosti */
-  background-color: #f9f9f9; /* Světlé pozadí */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  resize: vertical;
+  background-color: #f9f9f9;
 }
 
 textarea:focus {
   outline: none;
-  border-color: #007bff; /* Modrý okraj při zaostření */
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3); /* Jemný efekt při zaostření */
-  background-color: #fff; /* Bílé pozadí při zaostření */
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+  background-color: #fff;
 }
 
 textarea::placeholder {
-  color: #aaa; /* Světle šedý text pro placeholder */
+  color: #aaa;
 }
 
+/* Logout Button */
 .logout-button {
-  display: block; /* Zajistí, že tlačítko zabere celý řádek */
-  margin: 20px auto 0; /* Vertikální mezery a zarovnání na střed */
+  display: block;
+  margin: 20px auto 0;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
-  background-color: #dc3545; /* Červená barva */
+  background-color: #dc3545;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  text-align: center; /* Zarovnání textu na střed */
 }
 
 .logout-button:hover {
-  background-color: #b02a37; /* Tmavší červená při hoveru */
+  background-color: #b02a37;
 }
 
 .logout-button:focus {
   outline: none;
-  box-shadow: 0 0 4px rgba(220, 53, 69, 0.5); /* Jemný efekt při zaostření */
+  box-shadow: 0 0 4px rgba(220, 53, 69, 0.5);
 }
+
 /* Wrapper pro kartičky */
 .recepty-container {
-  display: flex; /* Aktivace flexboxu */
-  flex-wrap: wrap; /* Povolení zalamování obsahu na další řádek */
-  gap: 20px; /* Mezera mezi kartičkami */
-  justify-content: center; /* Zarovnání obsahu na střed */
-  padding: 20px; /* Vnitřní odsazení kolem kartiček */
-  max-width: 1200px; /* Maximální šířka wrapperu */
-  margin: 0 auto; /* Centrovaní wrapperu na stránce */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Nadpis */
@@ -174,20 +223,21 @@ textarea::placeholder {
 
 /* Jednotlivá kartička */
 .recept-card {
-  width: 250px; /* Pevná šířka kartičky */
-  background-color: #fff; /* Bílý podklad */
-  border: 1px solid #ccc; /* Světle šedý okraj */
-  border-radius: 8px; /* Zaoblené rohy */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Jemný stín */
-  padding: 20px; /* Vnitřní odsazení uvnitř kartičky */
-  text-align: center; /* Zarovnání textu na střed */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efekt při hoveru */
+  width: 250px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 /* Hover efekt */
 .recept-card:hover {
-  transform: translateY(-5px); /* Mírný posun nahoru při hoveru */
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Zvýrazněný stín */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Titulek kartičky */
@@ -204,4 +254,41 @@ textarea::placeholder {
   font-size: 14px;
   color: #666;
   margin-bottom: 10px;
+}
+
+/* Tlačítko pro mazání kartičky */
+.recept-card button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: red;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.recept-card button:hover {
+  transform: scale(1.1);
+  color: darkred;
+}
+
+.login-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  margin: 0 auto;
 }

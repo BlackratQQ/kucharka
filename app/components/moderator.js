@@ -64,7 +64,16 @@ export default function Moderator() {
         <p>Žádné recepty nejsou k dispozici.</p>
       ) : (
         recepty.map((recept) => (
-          <div key={recept.id} className="recept-card">
+          <div
+            key={recept.id}
+            className="recept-card"
+            style={{
+              position: "relative",
+              padding: "20px",
+              border: "1px solid #ccc",
+              margin: "10px 0",
+            }}
+          >
             <button
               onClick={() => handleDelete(recept.id)}
               style={{

@@ -31,7 +31,7 @@ export default function LoginForm({ onLogin }) {
 
   return (
     <div className="login-form">
-      <h1>Login</h1>
+      <h2>Přihlásit</h2>
       <form onSubmit={handleLogin}>
         <input
           type="text"
@@ -48,7 +48,7 @@ export default function LoginForm({ onLogin }) {
           required
         />
         {error && <p className="error-message">{error}</p>}
-        <button type="submit">Login</button>
+        <button type="submit">Přihlásit</button>
       </form>
     </div>
   );
