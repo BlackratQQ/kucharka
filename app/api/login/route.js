@@ -1,33 +1,38 @@
-import { NextResponse } from "next/server"; // Pomáhá vytvářet odpovědi pro API
+import { NextResponse } from "next/server";
 
-// Seznam uživatelů s jejich údaji
-const users = [
-  { id: 1, username: "admin", password: "admin123", role: "admin" }, // Admin uživatel
-  { id: 2, username: "user", password: "user123", role: "user" }, // Běžný uživatel
-];
-
-// Hlavní funkce, která zpracovává POST požadavek (přihlašování)
 export async function POST(req) {
-  // Načtení dat z těla požadavku (odeslané uživatelské jméno a heslo)
+  // Definice uživatelů přímo v API handleru
+  const users = [
+    { id: 1, username: "admin", password: "admin123", role: "admin" },
+    { id: 2, username: "user", password: "user123", role: "user" },
+    {
+      id: 3,
+      username: "moderator",
+      password: "moderator123",
+      role: "moderator",
+    },
+  ];
+
+  // Načtení dat z těla požadavku
   const { username, password } = await req.json();
 
-  // Hledání uživatele v seznamu podle uživatelského jména a hesla
+  // Vyhledání uživatele podle uživatelského jména a hesla
   const user = users.find(
     (u) => u.username === username && u.password === password
   );
 
-  // Pokud uživatel není nalezen (špatné jméno nebo heslo)
+  // Pokud uživatel neexistuje
   if (!user) {
     return NextResponse.json(
-      { error: "Invalid username or password" }, // Odpověď s chybovou zprávou
-      { status: 401 } // HTTP status: Unauthorized (neautorizovaný přístup)
+      { error: "Invalid username or password" },
+      { status: 401 }
     );
   }
 
-  // Pokud uživatel existuje, vrátíme jeho údaje (bez hesla)
+  // Pokud uživatel existuje
   return NextResponse.json({
-    id: user.id, // ID uživatele
-    username: user.username, // Uživatelské jméno
-    role: user.role, // Role (admin nebo user)
+    id: user.id,
+    username: user.username,
+    role: user.role,
   });
 }
