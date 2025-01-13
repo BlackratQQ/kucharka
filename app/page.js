@@ -43,6 +43,28 @@ export default function Home() {
     localStorage.removeItem("user");
     setUser(null);
   };
+  <Head>
+    <title>Recepty Online | Inspirace pro vaření</title>
+    <meta
+      name="description"
+      content="Prohlédněte si chutné recepty a objevte inspiraci pro vaření. Tradiční česká kuchyně i moderní pokrmy na jednom místě!"
+    />
+    <meta
+      name="keywords"
+      content="recepty, vaření, česká kuchyně, domácí pokrmy, rychlé recepty, zdravé vaření"
+    />
+    <meta name="author" content="Recepty Online Tým" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Recepty Online | Inspirace pro vaření" />
+    <meta
+      property="og:description"
+      content="Prohlédněte si chutné recepty a objevte inspiraci pro vaření. Tradiční česká kuchyně i moderní pokrmy na jednom místě!"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://receptyonline.cz" />
+    <meta property="og:image" content="https://receptyonline.cz/og-image.jpg" />
+  </Head>;
 
   return (
     <>
